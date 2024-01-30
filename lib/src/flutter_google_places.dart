@@ -289,14 +289,16 @@ class _PlacesAutocompleteOverlayState extends PlacesAutocompleteState {
                 } else if (state.text.isEmpty ||
                     response == null ||
                     response.predictions.isEmpty) {
-                  return Material(
-                    color: theme.dialogBackgroundColor,
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: bodyBottomLeftBorderRadius,
-                      bottomRight: bodyBottomRightBorderRadius,
-                    ),
-                    child: widget.logo ?? const PoweredByGoogleImage(),
-                  );
+                  return const SizedBox.shrink();
+
+                  //   Material(
+                  //   color: theme.dialogBackgroundColor,
+                  //   borderRadius: BorderRadius.only(
+                  //     bottomLeft: bodyBottomLeftBorderRadius,
+                  //     bottomRight: bodyBottomRightBorderRadius,
+                  //   ),
+                  //   child: widget.logo ?? const PoweredByGoogleImage(),
+                  // );
                 } else {
                   return SingleChildScrollView(
                     child: Material(
@@ -403,7 +405,7 @@ class PlacesAutocompleteResult extends StatelessWidget {
           return Stack(
             children: [
               if (state.isSearching) _Loader(),
-              logo ?? const PoweredByGoogleImage()
+              const SizedBox.shrink()
             ],
           );
         }
@@ -480,28 +482,28 @@ class _AppBarPlacesAutoCompleteTextFieldState
   }
 }
 
-class PoweredByGoogleImage extends StatelessWidget {
-  final _poweredByGoogleWhite =
-      'packages/flutter_google_places_hoc081098/assets/google_white.png';
-  final _poweredByGoogleBlack =
-      'packages/flutter_google_places_hoc081098/assets/google_black.png';
-
-  const PoweredByGoogleImage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-      Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Image.asset(
-            Theme.of(context).brightness == Brightness.light
-                ? _poweredByGoogleWhite
-                : _poweredByGoogleBlack,
-            scale: 2.5,
-          ))
-    ]);
-  }
-}
+// class PoweredByGoogleImage extends StatelessWidget {
+//   final _poweredByGoogleWhite =
+//       'packages/flutter_google_places_hoc081098/assets/google_white.png';
+//   final _poweredByGoogleBlack =
+//       'packages/flutter_google_places_hoc081098/assets/google_black.png';
+//
+//   const PoweredByGoogleImage({Key? key}) : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+//       Padding(
+//           padding: const EdgeInsets.all(16.0),
+//           child: Image.asset(
+//             Theme.of(context).brightness == Brightness.light
+//                 ? _poweredByGoogleWhite
+//                 : _poweredByGoogleBlack,
+//             scale: 2.5,
+//           ))
+//     ]);
+//   }
+// }
 
 class PredictionsListView extends StatelessWidget {
   final List<Prediction> predictions;
